@@ -6,7 +6,7 @@ export default function authenticate(req, res, next) {
         const header = req.header("Authorization")
 
         if(header == null){
-
+console.log("No token provided")
             next()
 
         }else{

@@ -1,4 +1,4 @@
-import User from "../models/user.js"
+import User from "../models/users.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
@@ -54,7 +54,7 @@ export async function loginUser(req,res){
 
             //res.json({message : "User not found"})
 
-            res.status(404).json({message : "User not found"})
+            res.status(403).json({message : "User not found"})
             return
         }
 

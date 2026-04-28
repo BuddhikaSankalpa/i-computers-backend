@@ -1,6 +1,12 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import userRouter from './Routers/userRouter.js'
+import productRouter from './Routers/productRouter.js'
+import authenticate from './middlewares/authenticate.js'
 import dotenv from 'dotenv'
+import cors from "cors"
+
+
 dotenv.config()
 
 const mongoDBURI = process.env.MONGODB_URI
@@ -13,7 +19,14 @@ mongoose.connect(mongoDBURI).then(
 
 const app = express()
 
+app.use(cors())
+
 app.use( express.json() )
+
+app.use(authenticate)
+
+app.use("/users" , userRouter)
+app.use("/products" , productRouter)
 
 app.listen(
     3000 ,
