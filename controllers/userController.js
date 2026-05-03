@@ -75,7 +75,7 @@ export async function loginUser(req,res){
                 process.env.JWT_SECRET_KEY
             )
 
-            res.json({message : "Login successful", token : token})
+            res.json({message : "Login successful", token : token, isAdmin : user.isAdmin})
 
         }else{
 
